@@ -203,8 +203,24 @@ void L2A::Annotator::Draw(AIAnnotatorMessage* message) const
     // This can only be called when the annotator is active.
     if (!IsActive()) l2a_error("The annotator has to be active.");
 
+    // Check how many items are present in this document
+    std::vector<AIArtHandle> l2a_items;
+    L2A::AI::GetDocumentItems(l2a_items, L2A::AI::SelectionState::all);
+    L2A::GlobalMutable().logger_.push_back(
+        ai::UnicodeString("  number items in document: ") + L2A::UTIL::IntegerToString(l2a_items.size()));
+
+        L2A::GlobalMutable().logger_.push_back(
+        ai::UnicodeString("  number items in item_vector_: ") + L2A::UTIL::IntegerToString(item_vector_.size()));
+
     // Loop over items and draw boundary.
-    for (const auto& item : item_vector_) std::get<0>(item).Draw(message, std::get<1>(item));
+        int counter = 0;
+        for (const auto& item : item_vector_)
+        {
+            L2A::GlobalMutable().logger_.push_back(
+            ai::UnicodeString("  loop iteration: ") + L2A::UTIL::IntegerToString(counter));
+            std::get<0>(item).Draw(message, std::get<1>(item));
+            counter++;
+        }
 }
 
 /**
