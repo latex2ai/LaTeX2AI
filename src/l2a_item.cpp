@@ -410,8 +410,14 @@ std::vector<AIRealPoint> L2A::Item::GetPosition(const std::vector<PlaceAlignment
  */
 void L2A::Item::Draw(AIAnnotatorMessage* message, const std::map<PlaceAlignment, AIRealPoint>& item_boundaries) const
 {
+    auto is_valid = sAIArt->ValidArt(this->placed_item_, true);
+    
     L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("L2A::Item::Draw Line ") + L2A::UTIL::IntegerToString(__LINE__));
+    
+    L2A::GlobalMutable().logger_.push_back(
+        ai::UnicodeString("  Valid Art: ") + L2A::UTIL::IntegerToString(is_valid));
+
     // Get the color for this item.
     AIRGBColor item_color;
     if (IsDiamond())

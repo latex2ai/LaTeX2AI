@@ -65,8 +65,10 @@ void L2A::Annotator::ArtSelectionChanged()
     item_vector_.clear();
 
     // Only do something if the annotator is active.
-    if (!IsActive())
-        return;
+    if (!IsActive()){
+        L2A::GlobalMutable().logger_.push_back(
+            ai::UnicodeString("  IsActive: ") + L2A::UTIL::IntegerToString(__LINE__));
+        return;}
     else
     {
         // Get all l2a items in the document.
@@ -74,6 +76,9 @@ void L2A::Annotator::ArtSelectionChanged()
         L2A::AI::GetDocumentItems(all_items, L2A::AI::SelectionState::all);
         for (auto& item : all_items)
         {
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("  Add item: ") + L2A::UTIL::IntegerToString(__LINE__));
+            
             // Create item object.
             L2A::Item new_item(item);
 
