@@ -303,7 +303,7 @@ namespace L2A
         void GetArtParents(const AIArtHandle& art_item, std::vector<AIArtHandle>& parents);
 
         /**
-         * \brief Check if a item is locked and or hidden in AI, including the parent locked / hidden settings.
+         * \brief Check if an item is locked and or hidden in AI, including the parent locked / hidden settings.
          * @params art_item(in) Art item.
          * @params is_hidden(out) If the item or any of the parents are hidden.
          * @params is_locked(out) If the item or any of the parents are locked.
@@ -311,6 +311,13 @@ namespace L2A
          */
         void GetIsHiddenLocked(const AIArtHandle& art_item, bool& is_hidden, bool& is_locked);
 
+    /**
+     * \brief Check if an item (internally that is a pointer) is valid.
+     * @params art_item(in) Art item.
+     */
+    bool IsValidArt(const AIArtHandle& art_item);
+    AIAPI AIBoolean (*ValidArt) ( AIArtHandle art, AIBoolean searchAllLayerLists );
+    
         /**
          * \brief Check if the current insertion point is locked and or hidden, i.e. no item can be created.
          */
