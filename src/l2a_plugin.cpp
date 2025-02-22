@@ -100,6 +100,14 @@ ASErr L2APlugin::Notify(AINotifierMessage* message)
     {
         if (message->notifier == notify_selection_changed_)
         {
+            const auto meins = annotator_->NumberActiveArt();
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("L2APlugin::Notify notify selection changed start ") +
+                L2A::UTIL::IntegerToString(__LINE__));
+            L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("   L2APlugin::Notify n_items ") +
+                                                   L2A::UTIL::IntegerToString(meins.first) + " n_active " +
+                                                   L2A::UTIL::IntegerToString(meins.second));
+
             // Selection of art items changed in the document.
 
             // Invalidate the entire document view bounds.
@@ -118,18 +126,48 @@ ASErr L2APlugin::Notify(AINotifierMessage* message)
                     ui_manager_->GetItemForm().OpenEditItemForm(placed_item);
                 }
             }
+
+            const auto meins2 = annotator_->NumberActiveArt();
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("L2APlugin::Notify notify selection changed end ") +
+                L2A::UTIL::IntegerToString(__LINE__));
+            L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("   L2APlugin::Notify n_items ") +
+                                                   L2A::UTIL::IntegerToString(meins2.first) + " n_active " +
+                                                   L2A::UTIL::IntegerToString(meins2.second));
         }
         else if (message->notifier == notify_active_doc_view_title_changed_ ||
                  message->notifier == notify_document_save_ || message->notifier == notify_document_save_as_)
         {
+            const auto meins = annotator_->NumberActiveArt();
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("L2APlugin::Notify save / load start ") + L2A::UTIL::IntegerToString(__LINE__));
+            L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("   L2APlugin::Notify n_items ") +
+                                                   L2A::UTIL::IntegerToString(meins.first) + " n_active " +
+                                                   L2A::UTIL::IntegerToString(meins.second));
+
             if (!L2A::AI::IsActiveDocumentCloudDocument())
             {
+                L2A::GlobalMutable().logger_.push_back(
+                    ai::UnicodeString("L2APlugin::Notify not cloud") + L2A::UTIL::IntegerToString(__LINE__));
+
+
                 L2A::AI::UndoActivate();
                 L2A::CheckItemDataStructure();
             }
+
+
+            const auto meins2 = annotator_->NumberActiveArt();
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("L2APlugin::Notify save / load end ") + L2A::UTIL::IntegerToString(__LINE__));
+            L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("   L2APlugin::Notify n_items ") +
+                                                   L2A::UTIL::IntegerToString(meins2.first) + " n_active " +
+                                                   L2A::UTIL::IntegerToString(meins2.second));
         }
         else if (message->notifier == notify_CSXS_plugplug_setup_complete_)
         {
+            L2A::GlobalMutable().logger_.push_back(
+                ai::UnicodeString("L2APlugin::Notify plugplug ") + L2A::UTIL::IntegerToString(__LINE__));
+
             ui_manager_->RegisterCSXSEventListeners();
         }
     }

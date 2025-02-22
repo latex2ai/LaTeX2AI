@@ -33,8 +33,8 @@
 
 #include "l2a_ai_functions.h"
 #include "l2a_error.h"
-#include "l2a_item.h"
 #include "l2a_global.h"
+#include "l2a_item.h"
 
 
 /**
@@ -53,6 +53,20 @@ L2A::Annotator::Annotator(SPInterfaceMessage* message) : cursor_item_(nullptr)
     SetAnnotator(false);
 }
 
+
+std::pair<int, int> L2A::Annotator::NumberActiveArt() const
+{
+    int n_valid = 0;
+    for (const auto& item : item_vector_)
+    {
+        if (item.first.IsValid())
+        {
+            n_valid += 1;
+        }
+    }
+    return {item_vector_.size(), n_valid};
+}
+
 /**
  *
  */
@@ -65,10 +79,12 @@ void L2A::Annotator::ArtSelectionChanged()
     item_vector_.clear();
 
     // Only do something if the annotator is active.
-    if (!IsActive()){
+    if (!IsActive())
+    {
         L2A::GlobalMutable().logger_.push_back(
             ai::UnicodeString("  IsActive: ") + L2A::UTIL::IntegerToString(__LINE__));
-        return;}
+        return;
+    }
     else
     {
         // Get all l2a items in the document.
@@ -78,7 +94,7 @@ void L2A::Annotator::ArtSelectionChanged()
         {
             L2A::GlobalMutable().logger_.push_back(
                 ai::UnicodeString("  Add item: ") + L2A::UTIL::IntegerToString(__LINE__));
-            
+
             // Create item object.
             L2A::Item new_item(item);
 
@@ -136,22 +152,24 @@ void L2A::Annotator::SetAnnotatorWithInvalidateBounds(bool active)
 /**
  *
  */
-void L2A::Annotator::SetAnnotatorActive() { 
-    
-        L2A::GlobalMutable().logger_.push_back(
+void L2A::Annotator::SetAnnotatorActive()
+{
+    L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("L2A::Annotator::SetAnnotatorActive Line ") + L2A::UTIL::IntegerToString(__LINE__));
 
-    SetAnnotatorWithInvalidateBounds(true); }
+    SetAnnotatorWithInvalidateBounds(true);
+}
 
 /**
  *
  */
-void L2A::Annotator::SetAnnotatorInactive() { 
-    
-     L2A::GlobalMutable().logger_.push_back(
+void L2A::Annotator::SetAnnotatorInactive()
+{
+    L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("L2A::Annotator::SetAnnotatorInactive Line ") + L2A::UTIL::IntegerToString(__LINE__));
-    
-    SetAnnotatorWithInvalidateBounds(false); }
+
+    SetAnnotatorWithInvalidateBounds(false);
+}
 
 /**
  *
@@ -214,18 +232,18 @@ void L2A::Annotator::Draw(AIAnnotatorMessage* message) const
     L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("  number items in document: ") + L2A::UTIL::IntegerToString(l2a_items.size()));
 
-        L2A::GlobalMutable().logger_.push_back(
+    L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("  number items in item_vector_: ") + L2A::UTIL::IntegerToString(item_vector_.size()));
 
     // Loop over items and draw boundary.
-        int counter = 0;
-        for (const auto& item : item_vector_)
-        {
-            L2A::GlobalMutable().logger_.push_back(
+    int counter = 0;
+    for (const auto& item : item_vector_)
+    {
+        L2A::GlobalMutable().logger_.push_back(
             ai::UnicodeString("  loop iteration: ") + L2A::UTIL::IntegerToString(counter));
-            std::get<0>(item).Draw(message, std::get<1>(item));
-            counter++;
-        }
+        std::get<0>(item).Draw(message, std::get<1>(item));
+        counter++;
+    }
 }
 
 /**

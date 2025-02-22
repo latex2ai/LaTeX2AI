@@ -31,10 +31,9 @@
 #define L2A_ANNOTATOR_H_
 
 
-#include "l2a_suites.h"
-
 #include "l2a_global.h"
 #include "l2a_string_functions.h"
+#include "l2a_suites.h"
 
 #include <map>
 
@@ -63,6 +62,12 @@ namespace L2A
          * reloaded.
          */
         void ArtSelectionChanged();
+
+        /**
+         * \brief This method is called when the art selection changed. If the annotator is active, the items are
+         * reloaded.
+         */
+        std::pair<int, int> NumberActiveArt() const;
 
         /**
          * \brief Return if the annotator is active or not.
@@ -97,12 +102,14 @@ namespace L2A
         /**
          * \brief Return true hit item.
          */
-        AIArtHandle GetArtHit() const {
+        AIArtHandle GetArtHit() const
+        {
             L2A::GlobalMutable().logger_.push_back(
                 ai::UnicodeString("L2A::Annotator::GetArtHit Line ") + L2A::UTIL::IntegerToString(__LINE__));
 
-            
-            return cursor_item_; }
+
+            return cursor_item_;
+        }
 
         /**
          * \brief Draw the boundaries of the items.

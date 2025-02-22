@@ -311,13 +311,13 @@ namespace L2A
          */
         void GetIsHiddenLocked(const AIArtHandle& art_item, bool& is_hidden, bool& is_locked);
 
-    /**
-     * \brief Check if an item (internally that is a pointer) is valid.
-     * @params art_item(in) Art item.
-     */
-    bool IsValidArt(const AIArtHandle& art_item);
-    AIAPI AIBoolean (*ValidArt) ( AIArtHandle art, AIBoolean searchAllLayerLists );
-    
+        /**
+         * \brief Check if an item (internally that is a pointer) is valid.
+         * @params art_item(in) Art item.
+         */
+        //    bool IsValidArt(const AIArtHandle& art_item);
+        //    AIAPI AIBoolean (*ValidArt) ( AIArtHandle art, AIBoolean searchAllLayerLists );
+
         /**
          * \brief Check if the current insertion point is locked and or hidden, i.e. no item can be created.
          */

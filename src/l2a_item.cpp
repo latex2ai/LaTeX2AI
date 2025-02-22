@@ -220,7 +220,8 @@ void L2A::Item::RedoBoundary()
     AIRealPoint old_position = GetPosition();
 
     // Get the angle.
-    L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("L2A::Item::RedoBounary ")+ L2A::UTIL::IntegerToString(__LINE__));
+    L2A::GlobalMutable().logger_.push_back(
+        ai::UnicodeString("L2A::Item::RedoBounary ") + L2A::UTIL::IntegerToString(__LINE__));
     AIReal angle = GetAngle();
 
     // Rotate the object back to the initial position.
@@ -347,7 +348,7 @@ std::vector<AIRealPoint> L2A::Item::GetPosition(const std::vector<PlaceAlignment
     // Boundary coordinates for item.
     AIRealRect bounds = L2A::AI::GetArtBounds(placed_item_);
 
-        L2A::GlobalMutable().logger_.push_back(
+    L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("L2A::Item::GetPosition Line ") + L2A::UTIL::IntegerToString(__LINE__));
     if ((!IsRotated()) && (!IsDiamond()))
     {
@@ -411,12 +412,11 @@ std::vector<AIRealPoint> L2A::Item::GetPosition(const std::vector<PlaceAlignment
 void L2A::Item::Draw(AIAnnotatorMessage* message, const std::map<PlaceAlignment, AIRealPoint>& item_boundaries) const
 {
     auto is_valid = sAIArt->ValidArt(this->placed_item_, true);
-    
+
     L2A::GlobalMutable().logger_.push_back(
         ai::UnicodeString("L2A::Item::Draw Line ") + L2A::UTIL::IntegerToString(__LINE__));
-    
-    L2A::GlobalMutable().logger_.push_back(
-        ai::UnicodeString("  Valid Art: ") + L2A::UTIL::IntegerToString(is_valid));
+
+    L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("  Valid Art: ") + L2A::UTIL::IntegerToString(is_valid));
 
     // Get the color for this item.
     AIRGBColor item_color;
@@ -542,7 +542,8 @@ AIReal L2A::Item::GetStretch(unsigned short director) const
     L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("L2A::Item::GetStretch"));
 
     L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("  PDF Path:\n     ") + this->GetPDFPath().GetFullPath());
-    L2A::GlobalMutable().logger_.push_back(ai::UnicodeString("  Exists: ") + L2A::UTIL::IntegerToString(L2A::UTIL::IsFile(this->GetPDFPath())));
+    L2A::GlobalMutable().logger_.push_back(
+        ai::UnicodeString("  Exists: ") + L2A::UTIL::IntegerToString(L2A::UTIL::IsFile(this->GetPDFPath())));
 
     AIRealMatrix artMatrix = L2A::AI::GetPlacedMatrix(placed_item_);
 

@@ -33,6 +33,7 @@
 
 #include "l2a_latex.h"
 #include "l2a_property.h"
+#include "l2a_suites.h"
 
 #include <map>
 
@@ -177,6 +178,12 @@ namespace L2A
          * \brief Draw the boundary of the placed item in the document.
          */
         void Draw(AIAnnotatorMessage* message, const std::map<PlaceAlignment, AIRealPoint>& item_boundaries) const;
+
+        bool IsValid() const
+        {
+            auto is_valid = sAIArt->ValidArt(this->placed_item_, true);
+            return is_valid;
+        }
 
         /**
          * \brief Check if the item is of diamond shape.

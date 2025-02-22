@@ -553,7 +553,7 @@ void L2A::AI::SaveToPDF()
             bool is_locked;
             L2A::Item item_temp(placed_item);
 
-                        L2A::GlobalMutable().logger_.push_back(
+            L2A::GlobalMutable().logger_.push_back(
                 ai::UnicodeString("L2A::AI::SaveToPDF Line ") + L2A::UTIL::IntegerToString(__LINE__));
 
             if (item_temp.IsStretched() || item_temp.IsDiamond())
