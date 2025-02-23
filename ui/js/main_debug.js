@@ -69,10 +69,13 @@ $(function () {
         csInterface.dispatchEvent(event)
     })
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+        // Somehow when "Esc" is pressed we get an empty string as return value rom event.key (instead of the expected "Escape").
+        // The variable event.code is also empty, but it seems like this one is only empty for escape (space also produces an
+        // empty event.key but NOT an empty event.code).
+        if (event.code === "") {
             event.preventDefault()
             var event = new CSEvent(
-                "com.adobe.csxs.events.latex2ai.debug.cancel",
+                "com.adobe.csxs.events.latex2ai.debug.ok",
                 "APPLICATION",
                 "ILST",
                 "LaTeX2AIUI"
@@ -82,7 +85,7 @@ $(function () {
         }
     })
 
-    // let the native plug-in part of this sample know that we are ready to receive events now..
+    // let the native plug-in part of this sample know that we are ready to receive events now.
     var panelReadyEvent = new CSEvent(
         "com.adobe.csxs.events.latex2ai.debug.ready",
         "APPLICATION",
@@ -100,12 +103,16 @@ function update_create_form(event) {
 
     var l2a_xml = $xml.find("form_data")
 
-    is_redo = l2a_xml.attr("action") == "redo_items"
-    if (is_redo) {
+    action = l2a_xml.attr("action")
+    if (action == "redo_items") {
         $("#button_ok").prop("disabled", true)
         $("#extra_text").prop(
             "innerHTML",
-            "The error ocurred while recompiling items that were not changed.\nThis usually happens when something in the header changes or the document is compiled on a different system than before."
+            "The error occurred while recompiling items that were not changed.\nThis usually happens when something in the header changes or the document is compiled on a different system than before."
         )
+    } else if (action == "item_create") {
+        $("#button_cancel").val("Cancel item creation")
+    } else if (action == "item_edit") {
+        $("#button_cancel").val("Cancel item edit")
     }
 }
