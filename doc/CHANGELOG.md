@@ -1,5 +1,8 @@
 # Changelog
 
+-   **pre-release**
+    -   Bug fixes:
+        -   Fix bug that could arise when the item vector inside the annotator contained items with non-valid pointers
 -   **v1.0.2**
     -   Bug fixes:
         -   Fix bug that caused Illustrator to crash when deselecting all active LaTeX2AI elements [#189](https://github.com/isteinbrecher/latex2ai/issues/189).
