@@ -166,15 +166,15 @@ namespace L2A
 
         /**
          * \brief Get art handles in the document.
-         * @param items(out) Vector that will be cleared and filled up with the found items.
-         * @param selected(in) Which selection state should be searched.
-         * @param type(in) Type of the items to search.
+         * @param items (out) Vector that will be cleared and filled up with the found items.
+         * @param selected (in) Which selection state should be searched.
+         * @param type (in) Type of the items to search.
          */
         void GetItems(std::vector<AIArtHandle>& items, SelectionState selected, ai::int16 type = kAnyArt);
 
         /** Gets all placed items that are L2A items in the current document.
-         * @param l2a_items(out) vector that returns the art handles that match the description.
-         * @param selected(in) Type of selected items to search.
+         * @param l2a_items (out) vector that returns the art handles that match the description.
+         * @param selected (in) Type of selected items to search.
          */
         void GetDocumentItems(std::vector<AIArtHandle>& l2a_items, SelectionState selected);
 
@@ -279,37 +279,43 @@ namespace L2A
 
         /**
          * \brief Get the points on a path art item.
-         * @params path_item(in) Path item to get the points from.
-         * @params points(out) Vector with the path points.
-         * @params append_to_vector(in) If the points should be appended to vector, of if vector shoyuld be cleared
+         * @params path_item (in) Path item to get the points from.
+         * @params points (out) Vector with the path points.
+         * @params append_to_vector (in) If the points should be appended to vector, of if vector shoyuld be cleared
          * first.
          */
         void GetPathPoints(AIArtHandle& path_item, std::vector<AIRealPoint>& points, bool append_to_vector = false);
 
         /**
          * \brief Get the parent item of the art item.
-         * @params art_item(in) Art item.
-         * @params parent(out) Parent art item.
+         * @params art_item (in) Art item.
+         * @params parent (out) Parent art item.
          * @return True if parent exists.
          */
         bool GetArtParent(const AIArtHandle& art_item, AIArtHandle& parent);
 
         /**
          * \brief Get all parents of an art item.
-         * @params art_item(in) Art item.
-         * @params parents(out) Parents of the art item. The first item in the vector will be top parent, i.e. the main
+         * @params art_item (in) Art item.
+         * @params parents (out) Parents of the art item. The first item in the vector will be top parent, i.e. the main
          * layer.
          */
         void GetArtParents(const AIArtHandle& art_item, std::vector<AIArtHandle>& parents);
 
         /**
-         * \brief Check if a item is locked and or hidden in AI, including the parent locked / hidden settings.
-         * @params art_item(in) Art item.
-         * @params is_hidden(out) If the item or any of the parents are hidden.
-         * @params is_locked(out) If the item or any of the parents are locked.
+         * \brief Check if an item is locked and or hidden in AI, including the parent locked / hidden settings.
+         * @params art_item (in) Art item.
+         * @params is_hidden (out) If the item or any of the parents are hidden.
+         * @params is_locked (out) If the item or any of the parents are locked.
          * layer.
          */
         void GetIsHiddenLocked(const AIArtHandle& art_item, bool& is_hidden, bool& is_locked);
+
+        /**
+         * \brief Check if an item (internally that is a pointer) is valid.
+         * @params art_item (in) Art item.
+         */
+        bool IsValidArt(const AIArtHandle& art_item);
 
         /**
          * \brief Check if the current insertion point is locked and or hidden, i.e. no item can be created.
