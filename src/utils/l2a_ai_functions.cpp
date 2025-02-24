@@ -991,6 +991,11 @@ void L2A::AI::GetIsHiddenLocked(const AIArtHandle& art_item, bool& is_hidden, bo
 /**
  *
  */
+bool L2A::AI::IsValidArt(const AIArtHandle& art_item) { return sAIArt->ValidArt(art_item, true); }
+
+/**
+ *
+ */
 bool L2A::AI::GetLockedInsertionPoint()
 {
     AIArtHandle art;
