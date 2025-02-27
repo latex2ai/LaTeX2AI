@@ -149,7 +149,7 @@ if __name__ == "__main__":
         ui_release_dir = os.path.join(
             repo_dir,
             "scripts/release_files/",
-            f"com.isteinbrecher.latex2ai.{git_identifier}",
+            f"com.latex2ai.latex2ai.{git_identifier}",
         )
 
     # Check if the Windows binaries exist
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     )
     shutil.copytree(
         ui_release_dir,
-        os.path.join(release_zip_temp_dir, "com.isteinbrecher.latex2ai"),
+        os.path.join(release_zip_temp_dir, "com.latex2ai.latex2ai"),
     )
 
     Path(os.path.join(repo_dir, "scripts/release_zip/")).mkdir(exist_ok=True)

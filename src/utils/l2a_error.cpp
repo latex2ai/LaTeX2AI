@@ -92,7 +92,7 @@ L2A::ERR::Exception::Exception(const char* __file__, const int __line__, const c
     ai::UnicodeString full_error_string(
         "--------------------------------------------------------------------------------\n");
     full_error_string += "LaTeX2AI Error! If this happens, please open an issue under\n";
-    full_error_string += "github.com/isteinbrecher/latex2ai/issues\n";
+    full_error_string += "github.com/LaTeX2AI/LaTeX2AI/issues\n";
     full_error_string += "--------------------------------------------------------------------------------\n";
     full_error_string += "LaTeX2AI version:\n";
     full_error_string += L2A_VERSION_STRING_;

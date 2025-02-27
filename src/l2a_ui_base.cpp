@@ -47,7 +47,7 @@ AIErr L2A::UI::FormBase::LoadForm()
         ai::UnicodeString warning_string("");
         warning_string += "Could not open the LaTeX2AI user interface!\n";
         warning_string += "Please followed the installation instructions for the user interface stated on";
-        warning_string += "\"https://github.com/isteinbrecher/latex2ai\"";
+        warning_string += "\"https://github.com/LaTeX2AI/LaTeX2AI\"";
         L2A::AI::WarningAlert(warning_string);
     }
     return kNoErr;
