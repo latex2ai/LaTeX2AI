@@ -61,7 +61,7 @@ void L2A::UTIL::CheckGithubVersion()
     try
     {
         // Get the packages in the GitHub repository.
-        ai::UnicodeString command("curl -s https://api.github.com/repos/isteinbrecher/latex2ai/releases");
+        ai::UnicodeString command("curl -s https://api.github.com/repos/LaTeX2AI/LaTeX2AI/releases");
         ai::UnicodeString result;
 
         auto command_result = L2A::UTIL::ExecuteCommandLine(command);
@@ -99,7 +99,7 @@ void L2A::UTIL::CheckGithubVersion()
             ai::UnicodeString message_string("The new LaTeX2AI version v");
             message_string += newest_version.str();
             message_string +=
-                " is available at GitHub (https://github.com/isteinbrecher/latex2ai/releases). The currently used "
+                " is available at GitHub (https://github.com/LaTeX2AI/LaTeX2AI/releases). The currently used "
                 "version is v";
             message_string += current_version.str() + ".";
             sAIUser->MessageAlert(message_string);

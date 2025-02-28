@@ -8,9 +8,9 @@ LaTeX2AI is under the MIT license, see [./LICENSE](LICENSE).
 If you use LaTeX2AI to create figures for your work, please acknowledge it with a link to the GitHub repository.
 For example:
 
--   Sketches in this work have been created using the Adobe Illustrator plug-in LaTeX2AI ([https://github.com/isteinbrecher/latex2ai](https://github.com/isteinbrecher/latex2ai)).
+-   Sketches in this work have been created using the Adobe Illustrator plug-in LaTeX2AI ([https://github.com/LaTeX2AI/LaTeX2AI](https://github.com/LaTeX2AI/LaTeX2AI)).
 
-Feel free to leave a :star: on [GitHub](https://github.com/isteinbrecher/latex2ai).
+Feel free to leave a :star: on [GitHub](https://github.com/LaTeX2AI/LaTeX2AI).
 You can also add your work to [Work that uses LaTeX2AI](#work-that-uses-latex2ai).
 
 # Installation
@@ -24,14 +24,14 @@ The following software dependencies are required to run LaTeX2AI:
 
 ### Windows
 
-1. Download LaTeX2AI from the [GitHub release page](https://github.com/isteinbrecher/latex2ai/releases)
+1. Download LaTeX2AI from the [GitHub release page](https://github.com/LaTeX2AI/LaTeX2AI/releases)
 1. Unzip the `.zip` file
-1. Copy the user interface folder `com.isteinbrecher.latex2ai`
+1. Copy the user interface folder `com.latex2ai.latex2ai`
 
     - LaTeX2AI installation only for **_current_ user**:
-        - Copy `com.isteinbrecher.latex2ai` to `C:\Users\<USERNAME>\AppData\Roaming\Adobe\CEP\extensions` (the directory might have to be created)
+        - Copy `com.latex2ai.latex2ai` to `C:\Users\<USERNAME>\AppData\Roaming\Adobe\CEP\extensions` (the directory might have to be created)
     - LaTeX2AI installation for **_all_ users** (requires administrator privileges):
-        - Copy `com.isteinbrecher.latex2ai` to `C:\Program Files\Common Files\Adobe\CEP\extensions\`
+        - Copy `com.latex2ai.latex2ai` to `C:\Program Files\Common Files\Adobe\CEP\extensions\`
 
 1. Copy the plugin
 
@@ -46,14 +46,14 @@ To uninstall LaTeX2AI, delete the files you copied.
 
 ### macOS
 
-1. Download LaTeX2AI from the [GitHub release page](https://github.com/isteinbrecher/latex2ai/releases)
+1. Download LaTeX2AI from the [GitHub release page](https://github.com/LaTeX2AI/LaTeX2AI/releases)
 1. Unzip the file
-1. Copy the user interface folder `com.isteinbrecher.latex2ai`
+1. Copy the user interface folder `com.latex2ai.latex2ai`
 
     - LaTeX2AI installation only for **_current_ user**:
-        - Copy `com.isteinbrecher.latex2ai` to `~/Library/Application Support/Adobe/CEP/extensions/`
+        - Copy `com.latex2ai.latex2ai` to `~/Library/Application Support/Adobe/CEP/extensions/`
     - LaTeX2AI installation for **_all_ users** (requires administrator privileges):
-        - Copy `com.isteinbrecher.latex2ai` to `/Library/Application Support/Adobe/CEP/extensions/`
+        - Copy `com.latex2ai.latex2ai` to `/Library/Application Support/Adobe/CEP/extensions/`
 
 1. Copy the plugin
 
@@ -160,10 +160,10 @@ An incomplete list of work that uses LaTeX2AI
 # Contributing
 
 If you are interested in contributing to LaTeX2AI, we welcome your collaboration.
-For general questions, feature request and bug reports please open an [issue](https://github.com/isteinbrecher/latex2ai/issues).
+For general questions, feature request and bug reports please open an [issue](https://github.com/LaTeX2AI/LaTeX2AI/issues).
 
 If you contribute actual code, fork the repository and make the changes in a feature branch.
-Depending on the topic and amount of changes you also might want to open an [issue](https://github.com/isteinbrecher/latex2ai/issues).
+Depending on the topic and amount of changes you also might want to open an [issue](https://github.com/LaTeX2AI/LaTeX2AI/issues).
 To merge your changes into the main LaTeX2AI repository, create a pull request to the `develop` branch (this branch will be merged into `main` with the next release).
 A few things to keep in mind:
 
